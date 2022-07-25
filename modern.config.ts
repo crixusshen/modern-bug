@@ -9,7 +9,7 @@ import { defineConfig } from '@modern-js/app-tools';
 export default defineConfig({
   server: {
     ssr: true,
-    // 这里打开注释会报：
+    // 最新版本v1.6.4中这里打开注释会报错：undefinedModule not found: Error: Can't resolve './src' in '/Users/dfzq/modern-bug'
     ssrByEntries: {
       contacts: false,
     },
