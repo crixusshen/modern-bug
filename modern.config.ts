@@ -9,9 +9,10 @@ import { defineConfig } from '@modern-js/app-tools';
 export default defineConfig({
   server: {
     ssr: true,
-    // ssrByEntries: {
-    //   'contacts': false,
-    // },
+    // 这里打开注释会报：
+    ssrByEntries: {
+      contacts: false,
+    },
   },
   output: {
     // 差异化分发
