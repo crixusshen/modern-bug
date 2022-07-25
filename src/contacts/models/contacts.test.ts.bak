@@ -1,0 +1,30 @@
+/*
+ * @Author: shenzhiwei
+ * @Date: 2022-07-14 17:53:43
+ * @Company: orientsec.com.cn
+ * @Description: 单元测试 - contacts
+ */
+import { createStore } from '@modern-js/runtime/testing';
+import contactsModel from './contacts';
+
+const mockItem = {
+  avatar: '',
+  name: '李华',
+  age: '16',
+  email: 'lihua@gmail.com',
+  archived: false,
+};
+
+describe('test contracts model', () => {
+  it('actions works well', async () => {
+    const store = createStore();
+    const [state, actions] = store.use(contactsModel);
+
+    state.items.push(mockItem);
+    expect(store.use(contactsModel)[0].items.length).toBe(1);
+    expect(store.use(contactsModel)[0].items[0].archived).toBeFalsy();
+
+    await actions.archive('lihua@gmail.com');
+    expect(store.use(contactsModel)[0].items[0].archived).toBeTruthy();
+  });
+});
